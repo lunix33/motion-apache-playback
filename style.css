@@ -1,0 +1,118 @@
+body {
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	color: hsla(0deg, 0%, 15%, 1);
+	padding-bottom: 2rem;
+}
+
+a {
+	text-decoration: none;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+tr.odd {
+	background-color: hsla(0deg, 0%, 93%, 1);
+}
+
+th {
+	text-align: left;
+	font-size: 1.3rem;
+	font-weight: bold;
+	border-bottom: 1px solid hsla(0deg, 0%, 0%, 1)
+}
+
+th a {
+	color: hsla(0deg, 0%, 15%, 1);
+}
+
+th:after {
+	color: hsla(0deg, 0%, 60%, 1);
+}
+
+th.asc:after {
+	content: "▲";
+}
+
+th.desc:after {
+	content: "▼";
+}
+
+td {
+	padding: .2rem;
+}
+
+.indexcolicon {
+	text-align: center;
+}
+
+.indexcoldesc, .indexbreakrow {
+	display: none;
+}
+
+.modal {
+	display: flex;
+	position: fixed;
+	
+	top: 0; left: 0;
+	width: 100vw; height: 100vh;
+	flex-direction: column;
+	justify-content: center;
+	
+	background-color: hsla(0deg, 0%, 0%, 0.3);
+}
+
+.modal.hidden {
+	display: none;
+}
+
+.modal-body {
+	align-self: center;
+	display: grid;
+	grid-template-rows: auto;
+	grid-template-columns: auto;
+	grid-template-areas: 
+		"title close"
+		"time ."
+		"video video";
+	
+	background-color: white;
+	padding: 1rem;
+	border: 2px solid black;
+	border-radius: 5px;
+}
+
+.modal-body h2 {
+	grid-area: title;
+	font-size: 1.5rem;
+	padding: 0; margin: 0;
+}
+.modal-body a {
+	grid-area: close;
+	
+	text-align: right;
+	font-weight: bold;
+	font-size: 1.5rem;
+}
+
+.modal-body p {
+	grid-area: time;
+	
+	color: hsla(0deg, 0%, 35%, 1);
+	margin: 0 0 .5rem 0;
+}
+
+.modal-body video {
+	grid-area: video;
+	max-width: calc(100vw - 3rem);
+	max-height: calc(100vh-3rem);
+}
+
+@media screen and (min-width: 64em) {
+	body {
+		width: 64em;
+		margin: auto;
+	}
+}
