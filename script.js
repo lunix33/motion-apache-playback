@@ -90,7 +90,7 @@ function openPlayback(uri) {
         vid.src = uri;
         vid.controls = true;
         frag.append(vid);
-      } else if (contentType.contains('image/')) {
+      } else if (contentType.includes('image/')) {
         const img = document.createElement('img');
         img.src = uri;
         frag.append(img);
