@@ -187,7 +187,7 @@ function closeModal(event) {
     const target = event.target;
 
     // Only continue if backdrop or close button was clicked.
-    if (target !== modal && target.classList.contains('close'))
+    if (target !== modal && !target.classList.contains('close'))
       return;
   }
 
