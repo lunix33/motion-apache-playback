@@ -88,6 +88,7 @@ function openPlayback(uri) {
       const vid = document.createElement('video');
       if (vid.canPlayType(contentType) !== '') {
         vid.src = uri;
+        vid.controls = true;
         frag.append(vid);
       } else if (contentType.contains('image/')) {
         const img = document.createElement('img');
@@ -195,5 +196,6 @@ function closeModal(event) {
 
   // Clean the body to make it ready for next modal.
   const bodyEle = modal.querySelector('.body');
-  bodyEle.childNodes.forEach(v => bodyEle.removeChild(v));
+  const eles = [...bodyEle.childNodes];
+  eles.forEach(v => bodyEle.removeChild(v));
 }
