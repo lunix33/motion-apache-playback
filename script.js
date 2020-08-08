@@ -1,6 +1,7 @@
 /** @type {HTMLVideoElement} */
 let modal;
 
+// Initial setup when the DOM is loaded.
 document.addEventListener('DOMContentLoaded', () => {
   modal = document.querySelector('.modal');
 
@@ -9,11 +10,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelectorAll('td a').forEach(a => {
     a.addEventListener('click', (e) => {
+      // Don't display any modal when is the link to a directory.
+      const isDir = e.target.closest('tr').querySelector('.indexcolicon img').alt.includes('DIR');
+      if (isDir)
+        return;
+
+      // Prevent opening the link, and display in modal.
       e.preventDefault();
       openPlayback(a.href);
     })
   });
 
+  // Setup event for closing the modal.
   modal.addEventListener('click', closeModal);
   modal.querySelector('.modal .content .close', closeModal);
 });
@@ -64,11 +72,14 @@ function setupLiveURI() {
   link.addEventListener('click', (e) => {
     e.preventDefault();
 
+    // Make a document with an iframe to the live page.
     const frag = document.createDocumentFragment();
     const frame = document.createElement('iframe');
     frame.src = href;
     frag. append(frame);
-    openModal('Live', null, frag, true);
+
+    // Display a fullscreen modal with iframe.
+    openModal('Live', undefined, frag, true);
   });
 }
 
@@ -79,7 +90,7 @@ function setupLiveURI() {
  */
 function openPlayback(uri) {
   return new Promise((resolve) => {
-    const [cam, time, ext] = fileToData(uri);
+    const [cam, time] = fileToData(uri);
 
     fetch(uri, {method: 'HEAD'}).then((r) => {
       const contentType = r.headers.get('content-type');
@@ -118,7 +129,7 @@ function openPlayback(uri) {
 /**
  * Extract data from a file URI.
  * @param {string} uri The URI from which data needs to be extracted.
- * @returns {[string, string, string]} An array with the camera name, the time, and the type of file (in order)
+ * @returns {[string, string]} An array with the camera name, the time, and the type of file (in order)
  */
 function fileToData(uri) {
   const rtn = uri
@@ -141,9 +152,6 @@ function fileToData(uri) {
       timeStyle: 'medium',
       hour12: false
     });
-
-  // The file extension.
-  rtn[2] = uri.substring(uri.length - 3);
 
   return rtn;
 }
