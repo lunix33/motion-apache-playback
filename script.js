@@ -61,7 +61,7 @@ function setupLiveURI() {
   link.innerText = href;
 
   // Open a modal with the live UI when link is clicked.
-  link.addEventListener(click, (e) => {
+  link.addEventListener('click', (e) => {
     e.preventDefault();
 
     const frag = document.createDocumentFragment();
