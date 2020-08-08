@@ -1,6 +1,7 @@
 # Motion (Apache) Playback
 
 This is a modification of the Apache directory listing to enable users to playback Motion recordings.
+[Visite the gallery](README-gallery) for an overview of the project.
 
 ## Requirement
 
