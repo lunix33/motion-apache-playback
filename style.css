@@ -64,19 +64,19 @@ td {
 	background-color: hsla(0deg, 0%, 0%, 0.3);
 }
 
-.modal.hidden {
+.hidden {
 	display: none;
 }
 
-.modal-body {
+.modal .content {
 	align-self: center;
 	display: grid;
 	grid-template-rows: auto;
 	grid-template-columns: auto;
 	grid-template-areas: 
 		"title close"
-		"time ."
-		"video video";
+		"sub sub"
+		"body body";
 	
 	background-color: white;
 	padding: 1rem;
@@ -84,12 +84,12 @@ td {
 	border-radius: 5px;
 }
 
-.modal-body h2 {
+.modal .content .title {
 	grid-area: title;
 	font-size: 1.5rem;
 	padding: 0; margin: 0;
 }
-.modal-body a {
+.modal .content .close {
 	grid-area: close;
 	
 	text-align: right;
@@ -97,15 +97,15 @@ td {
 	font-size: 1.5rem;
 }
 
-.modal-body p {
-	grid-area: time;
+.modal .content .sub {
+	grid-area: sub;
 	
 	color: hsla(0deg, 0%, 35%, 1);
 	margin: 0 0 .5rem 0;
 }
 
-.modal-body video {
-	grid-area: video;
+.modal .content .body {
+	grid-area: body;
 	max-width: calc(100vw - 3rem);
 	max-height: calc(100vh-3rem);
 }

@@ -2,15 +2,14 @@
 
 This is a modification of the Apache directory listing to enable users to playback Motion recordings.
 
-At the moment this project only allow to playback video and doesn't support subdirectories.
-
-If requested, pictures and subdirectories could be added.
-
 ## Requirement
 
 You need to have Apache and Motion installed and configured.
 
-Motion needs to ouput files in a web friendly format, we suggest setting `movie_codec` to `mp4`
+Motion needs to ouput files in a web friendly format, we suggest setting `movie_codec` to `mp4`.
+
+The date in the UI is taken from the file name, therefore the file naming is important. The following format is used: `%$_%Y-%m-%dT%H-%M-%S`.
+This format will yield the a file name similar to the following: `FrontDoor_2020-08-06T19-16-43.mp4`.
 
 ## Installation
 
