@@ -161,9 +161,10 @@ function fileToData(uri) {
  * @param {string} title The title to be displayed.
  * @param {string} sub The subtitle to be displayed.
  * @param {DocumentFragment} content The document to be displayed.
- * @param {boolean?} fullscreen True when the modal is fullscreen.
+ * @param {boolean} [fullscreen=false] True when the modal is fullscreen, default false.
  */
 function openModal(title, sub, content, fullscreen) {
+  fullscreen = fullscreen || false;
   modal.classList.toggle('fullscreen', fullscreen);
 
   const titleEle = modal.querySelector('.title');
