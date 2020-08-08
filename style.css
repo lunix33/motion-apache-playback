@@ -70,6 +70,10 @@ td {
 
 .modal .content {
 	align-self: center;
+
+	max-width: calc(100vw - 3rem);
+	max-height: calc(100vh - 3rem);
+
 	display: grid;
 	grid-template-rows: auto;
 	grid-template-columns: auto;
@@ -106,8 +110,11 @@ td {
 
 .modal .content .body {
 	grid-area: body;
-	max-width: calc(100vw - 3rem);
-	max-height: calc(100vh-3rem);
+	overflow: auto;
+}
+
+.modal .content .body img, .modal .content .body video {
+	max-width: 99%
 }
 
 @media screen and (min-width: 64em) {

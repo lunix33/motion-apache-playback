@@ -181,10 +181,12 @@ function closeModal(event) {
   // If the event is present, it means an event closed the dialog and needs to be handled.
   // if the event is undefined, then it means the modal was manually closed.
   if (event) {
-    event.preventDefault();
-
     /** @type {HTMLElement} */
     const target = event.target;
+
+    // Prevent when not a link or if close button.
+    if (target.nodeName !== 'A' && target.classList.contains('close'))
+      event.preventDefault();
 
     // Only continue if backdrop or close button was clicked.
     if (target !== modal && !target.classList.contains('close'))
