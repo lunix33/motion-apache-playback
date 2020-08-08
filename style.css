@@ -64,19 +64,23 @@ td {
 	background-color: hsla(0deg, 0%, 0%, 0.3);
 }
 
-.modal.hidden {
+.hidden {
 	display: none;
 }
 
-.modal-body {
+.modal .content {
 	align-self: center;
+
+	max-width: calc(100vw - 3rem);
+	max-height: calc(100vh - 3rem);
+
 	display: grid;
-	grid-template-rows: auto;
+	grid-template-rows: fit-content(200px) fit-content(100px) 1fr;
 	grid-template-columns: auto;
 	grid-template-areas: 
 		"title close"
-		"time ."
-		"video video";
+		"sub sub"
+		"body body";
 	
 	background-color: white;
 	padding: 1rem;
@@ -84,30 +88,47 @@ td {
 	border-radius: 5px;
 }
 
-.modal-body h2 {
+.modal.fullscreen .content {
+	width: calc(100% - 2rem);
+	height: 100%;
+	max-width: none;
+	max-height: none;
+	border: none;
+	border-radius: 0;
+}
+
+.modal .content .title {
 	grid-area: title;
 	font-size: 1.5rem;
 	padding: 0; margin: 0;
 }
-.modal-body a {
+.modal .content .close {
 	grid-area: close;
 	
 	text-align: right;
 	font-weight: bold;
 	font-size: 1.5rem;
+	justify-self: end;
 }
 
-.modal-body p {
-	grid-area: time;
+.modal .content .sub {
+	grid-area: sub;
 	
 	color: hsla(0deg, 0%, 35%, 1);
 	margin: 0 0 .5rem 0;
 }
 
-.modal-body video {
-	grid-area: video;
-	max-width: calc(100vw - 3rem);
-	max-height: calc(100vh-3rem);
+.modal .content .body {
+	grid-area: body;
+	overflow: auto;
+}
+
+.modal .content .body img, .modal .content .body video {
+	max-width: 99%
+}
+
+.modal .content .body iframe {
+	width: 100%; height: 100%;
 }
 
 @media screen and (min-width: 64em) {
