@@ -156,6 +156,8 @@ function fileToData(uri) {
  * @param {boolean?} fullscreen True when the modal is fullscreen.
  */
 function openModal(title, sub, content, fullscreen) {
+  modal.classList.toggle('fullscreen', fullscreen);
+
   const titleEle = modal.querySelector('.title');
   titleEle.innerText = title;
 

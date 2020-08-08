@@ -75,7 +75,7 @@ td {
 	max-height: calc(100vh - 3rem);
 
 	display: grid;
-	grid-template-rows: auto;
+	grid-template-rows: fit-content(200px) fit-content(100px) 1fr;
 	grid-template-columns: auto;
 	grid-template-areas: 
 		"title close"
@@ -86,6 +86,15 @@ td {
 	padding: 1rem;
 	border: 2px solid black;
 	border-radius: 5px;
+}
+
+.modal.fullscreen .content {
+	width: calc(100% - 2rem);
+	height: 100%;
+	max-width: none;
+	max-height: none;
+	border: none;
+	border-radius: 0;
 }
 
 .modal .content .title {
@@ -99,6 +108,7 @@ td {
 	text-align: right;
 	font-weight: bold;
 	font-size: 1.5rem;
+	justify-self: end;
 }
 
 .modal .content .sub {
@@ -115,6 +125,10 @@ td {
 
 .modal .content .body img, .modal .content .body video {
 	max-width: 99%
+}
+
+.modal .content .body iframe {
+	width: 100%; height: 100%;
 }
 
 @media screen and (min-width: 64em) {
